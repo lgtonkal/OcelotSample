@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  ocelot-apigateway:
+    image: ocelotapigateway
+    ports:
+      - "3000:80"
+  payment-service:
+    image: paymentservice
+    links:
+      - ocelot-apigateway
+    ports:
+      - "3001:80"
+  product-service:
+    image: productservice
+    links:
+      - ocelot-apigateway
+    ports:
+      - "3002:80"
+  product-service2:
+    image: productservice
+    links:
+      - ocelot-apigateway
+    ports:
+      - "3003:80"
